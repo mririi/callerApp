@@ -20,21 +20,14 @@
             android:padding="16dp">
 
             <!-- Profile Image -->
-            <ImageView
-                android:id="@+id/profileImageView"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:src="@drawable/default_profile_image"
-                android:scaleType="centerCrop"
-                android:contentDescription="profile_image"/>
 
             <!-- Contact Details -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="313dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="16dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nameTextView"
@@ -42,31 +35,31 @@
                     android:layout_height="wrap_content"
                     android:text="John Doe"
                     android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/emailTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="john.doe@example.com"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/phoneTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+1234567890"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/addressTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="123 Main St, City, Country"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -87,16 +80,6 @@
                 android:contentDescription="call"
                 android:padding="16dp"
                 android:src="@drawable/ic_call" />
-
-            <ImageButton
-                android:id="@+id/editIcon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="edit"
-                android:padding="16dp"
-                android:src="@drawable/ic_edit" />
 
             <ImageButton
                 android:id="@+id/deleteIcon"

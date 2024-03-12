@@ -64,8 +64,6 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
 
         private ImageButton callIcon;
 
-        private ImageButton editIcon;
-
         private ImageButton deleteIcon;
 
         private ProfileDAO profileDAO;
@@ -78,7 +76,6 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
             phoneTextView = itemView.findViewById(R.id.phoneTextView);
             addressTextView = itemView.findViewById(R.id.addressTextView);
             callIcon = itemView.findViewById(R.id.callIcon);
-            editIcon = itemView.findViewById(R.id.editIcon);
             deleteIcon = itemView.findViewById(R.id.deleteIcon);
 
             callIcon.setOnClickListener(new View.OnClickListener() {
@@ -93,27 +90,6 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
                         String dial = "tel:" + phone;
                         context.startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
                     }
-                }
-            });
-
-            editIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    Profile profile = profileList.get(position);
-
-                    // Create intent to start UpdateProfileActivity
-                    Intent intent = new Intent(context, UpdateProfileActivity.class);
-
-                    // Pass profile details as extras to the intent
-                    intent.putExtra("PROFILE_ID", profile.getId());
-                    intent.putExtra("PROFILE_NAME", profile.getName());
-                    intent.putExtra("PROFILE_EMAIL", profile.getEmail());
-                    intent.putExtra("PROFILE_PHONE", profile.getPhone());
-                    intent.putExtra("PROFILE_ADDRESS", profile.getAddress());
-
-                    // Start the activity
-                    context.startActivity(intent);
                 }
             });
 
