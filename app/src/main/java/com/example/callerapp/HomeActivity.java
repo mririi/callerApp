@@ -1,6 +1,7 @@
 package com.example.callerapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -21,9 +22,12 @@ public class HomeActivity extends AppCompatActivity {
     ProfileAdapter profileAdapter;
     List<Profile> profileList;
 
+
     private static final int REQUEST_PHONE_CALL = 1;
 
     SearchView searchView;
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
         profileList = dbHelper.getAllProfiles();
         profileAdapter = new ProfileAdapter(profileList,this);
         recyclerView.setAdapter(profileAdapter);
+        sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -65,6 +70,14 @@ public class HomeActivity extends AppCompatActivity {
     public void onAdd(View view) {
             Intent intent = new Intent(HomeActivity.this, CreateProfileActivity.class);
             startActivity(intent);
+    }
+
+    public void onLogout(View view) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("rememberMe", false);
+        editor.apply();
+        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
     private void filterData(String text) {

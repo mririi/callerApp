@@ -26,7 +26,6 @@ public class CreateProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
 
-        // Initialize views
         fullnameInputLayout = findViewById(R.id.editTextName);
         phoneInputLayout = findViewById(R.id.editTextPhone);
         emailInputLayout = findViewById(R.id.editTextEmail);
@@ -43,13 +42,11 @@ public class CreateProfileActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Get input values
                 String name = fullnameEditText.getText().toString().trim();
                 String phone = phoneEditText.getText().toString().trim();
                 String email = emailEditText.getText().toString().trim();
                 String address = addressEditText.getText().toString().trim();
 
-                // Validate input
                 if (name.isEmpty()){
                     fullnameInputLayout.setError("Fullname is required");
                     return;
@@ -82,7 +79,6 @@ public class CreateProfileActivity extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Close the current activity when Cancel is clicked
                 finish();
             }
         });

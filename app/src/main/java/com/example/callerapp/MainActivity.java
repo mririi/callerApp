@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int REQUEST_CALL_PERMISSION = 1;
-    RecyclerView recyclerView;
+     RecyclerView recyclerView;
     ProfileAdapter profileAdapter;
     List<Profile> profileList;
     SearchView searchView;

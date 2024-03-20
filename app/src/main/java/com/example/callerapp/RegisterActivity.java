@@ -28,7 +28,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // Initialize views
         fullnameInputLayout = findViewById(R.id.fullnameInput);
         usernameInputLayout = findViewById(R.id.usernameInput);
         passwordInputLayout = findViewById(R.id.passwordInput);
@@ -40,10 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.registerButton);
         cancelButton = findViewById(R.id.cancelButton);
 
-        // Initialize DatabaseHelper
-        ProfileDBHelper dbHelper = new ProfileDBHelper(getApplicationContext());
-
-        // Set click listener for register button
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
                 String confirmPassword = confirmPasswordEditText.getText().toString().trim();
 
 
-                // Validate input
                 if (fullname.isEmpty()){
                     fullnameInputLayout.setError("Fullname is required");
                     return;
@@ -75,32 +69,26 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                      return;
                 }
-                // Create a new user
                 userDAO = new UserDAOImplementation(RegisterActivity.this);
                 User user = new User(fullname, username, password);
 
-                // Save the user to the database
                 if (userDAO.register(user)) {
-                    // Redirect to login activity
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    finish(); // Finish register activity
+                    finish();
                 } else {
-                    // Show error if registration fails
                     Toast.makeText(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
 
-        // Set click listener for cancel button
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Redirect to login activity
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
-                finish(); // Finish register activity
+                finish();
             }
         });
     }

@@ -16,19 +16,16 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 
-        // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
 
-        // Check if "Remember Me" is checked and skip login page if true
         boolean rememberMe = sharedPreferences.getBoolean("rememberMe", false);
         Class<?> destinationClass = rememberMe ? HomeActivity.class : LoginActivity.class;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Start your main activity
                 Intent intent = new Intent(SplashActivity.this, destinationClass);
                 startActivity(intent);
-                finish();  // Optional: Close the splash screen activity
+                finish();
             }
         }, 3000);
     }

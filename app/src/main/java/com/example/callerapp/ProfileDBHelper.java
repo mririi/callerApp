@@ -34,7 +34,6 @@ public class ProfileDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Create the profiles table
         String createTableQuery = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME + " TEXT, " +
@@ -42,7 +41,6 @@ public class ProfileDBHelper extends SQLiteOpenHelper {
                 COLUMN_EMAIL + " TEXT, " +
                 COLUMN_ADDRESS + " TEXT);";
 
-        // Create User table
         String createUserTableQuery = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_USER + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_FULLNAME + " TEXT, " +
@@ -60,10 +58,8 @@ public class ProfileDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Drop the existing tables
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_USER);
-        // Recreate the table with the new schema
         onCreate(db);
     }
 
@@ -101,7 +97,6 @@ public class ProfileDBHelper extends SQLiteOpenHelper {
         return profileList;
     }
 
-    // Close the database
     public void closeDB() {
         SQLiteDatabase db = this.getReadableDatabase();
         if (db != null && db.isOpen()) {

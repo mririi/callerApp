@@ -29,8 +29,6 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
 
     private static final int REQUEST_PHONE_CALL = 1;
 
-    int selectedPosition = RecyclerView.NO_POSITION;
-
     public ProfileAdapter(List<Profile> profileList, Activity context) {
         this.profileList = profileList;
         this.context = context;
@@ -60,7 +58,6 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileV
         private TextView emailTextView;
         private TextView phoneTextView;
         private TextView addressTextView;
-        private Profile currentProfile;
 
         private ImageButton callIcon;
 
